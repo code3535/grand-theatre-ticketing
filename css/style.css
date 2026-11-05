@@ -176,8 +176,8 @@ button:disabled {
 }
 
 .seat.in-cart {
-    background: #555;
-    opacity: 0.45;
+    background: #8b5cf6;
+    opacity: 1;
     cursor: not-allowed;
 }
 
@@ -250,7 +250,7 @@ button:disabled {
 }
 
 .legend-seat.in-cart {
-    background: #555;
+    background: #8b5cf6;
 }
 
 .legend-seat.unavailable {
