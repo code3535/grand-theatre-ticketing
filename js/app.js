@@ -32,6 +32,7 @@ function displaySeats() {
 
                 seatElement.classList.add("seat", section.color);
                 seatElement.textContent = seat.number;
+                seatElement.dataset.seatId = seat.id;
                 seatElement.title = `${seat.id} - ${seat.price} AZN`;
 
                 if (seat.status === "unavailable") {
@@ -74,14 +75,19 @@ function selectSeat(seat, seatElement) {
 
 displaySeats();
 
+
+
 let zoomLevel = 1;
+let panX = 0;
+let panY = 0;
 
 const zoomInButton = document.getElementById("zoom-in");
 const zoomOutButton = document.getElementById("zoom-out");
 const zoomResetButton = document.getElementById("zoom-reset");
 
 function updateZoom() {
-    venueMap.style.transform = `scale(${zoomLevel})`;
+    venueMap.style.transform =
+        `translate(${panX}px, ${panY}px) scale(${zoomLevel})`;
 }
 
 zoomInButton.addEventListener("click", () => {
@@ -90,6 +96,7 @@ zoomInButton.addEventListener("click", () => {
         updateZoom();
     }
 });
+
 
 zoomOutButton.addEventListener("click", () => {
     if (zoomLevel > 0.6) {
@@ -100,5 +107,29 @@ zoomOutButton.addEventListener("click", () => {
 
 zoomResetButton.addEventListener("click", () => {
     zoomLevel = 1;
+    panX = 0;
+    panY = 0;
+    updateZoom();
+});
+
+
+
+document.getElementById("pan-up").addEventListener("click", () => {
+    panY -= 30;
+    updateZoom();
+});
+
+document.getElementById("pan-down").addEventListener("click", () => {
+    panY += 30;
+    updateZoom();
+});
+
+document.getElementById("pan-left").addEventListener("click", () => {
+    panX -= 30;
+    updateZoom();
+});
+
+document.getElementById("pan-right").addEventListener("click", () => {
+    panX += 30;
     updateZoom();
 });

@@ -174,3 +174,86 @@ button:disabled {
 .navigation-controls button:hover {
     background: #3985d6;
 }
+
+.seat.in-cart {
+    background: #555;
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+#venue {
+    overflow: hidden;
+}
+
+#venue-map {
+    transform-origin: top center;
+    transition: transform 0.2s ease;
+}
+
+.seat {
+    transition: transform 0.15s ease, outline 0.15s ease;
+}
+
+.seat:not(:disabled):hover {
+    filter: brightness(1.2);
+}
+
+.pan-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.pan-controls button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    background: #344a63;
+    color: white;
+    font-size: 20px;
+}
+
+.pan-controls button:hover {
+    background: #3985d6;
+}
+
+.seat-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.seat-legend div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.legend-seat {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.legend-seat.available {
+    background: #399b78;
+}
+
+.legend-seat.selected {
+    background: white;
+    outline: 2px solid #3985d6;
+}
+
+.legend-seat.in-cart {
+    background: #555;
+}
+
+.legend-seat.unavailable {
+    background: #555;
+    opacity: 0.4;
+}

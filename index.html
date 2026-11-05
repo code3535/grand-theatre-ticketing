@@ -28,7 +28,12 @@
                 <button id="zoom-out" type="button">−</button>
                 <button id="zoom-reset" type="button">Reset Zoom</button>
             </div>
-
+            <div class="pan-controls">
+                <button id="pan-up" type="button">↑</button>
+                <button id="pan-down" type="button">↓</button>
+                <button id="pan-left" type="button">←</button>
+                <button id="pan-right" type="button">→</button>
+            </div>
             <div class="navigation-controls">
                 <button data-section="VIP" type="button">VIP</button>
                 <button data-section="Premium" type="button">Premium</button>
@@ -36,6 +41,12 @@
             </div>
 
             <div id="venue-map"></div>
+            <div class="seat-legend">
+            <div><span class="legend-seat available"></span> Available</div>
+            <div><span class="legend-seat selected"></span> Selected</div>
+            <div><span class="legend-seat in-cart"></span> In Cart</div>
+            <div><span class="legend-seat unavailable"></span> Unavailable</div>
+            </div>
 
         </section>
 

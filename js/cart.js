@@ -1,5 +1,9 @@
 
-const cart = [];
+const cart = JSON.parse(localStorage.getItem("theatreCart")) || [];
+
+function saveCart() {
+    localStorage.setItem("theatreCart", JSON.stringify(cart));
+}
 
 function addToCart() {
     if (selectedSeat === null) {
@@ -16,7 +20,9 @@ function addToCart() {
     }
 
     cart.push(selectedSeat);
+    updateSeatAvailability();
 
+    saveCart();
     displayCart();
 
     selectedSeat = null;
@@ -65,10 +71,36 @@ function removeFromCart(seatId) {
 
     if (index !== -1) {
         cart.splice(index, 1);
+        updateSeatAvailability();
     }
 
+    saveCart();
     displayCart();
 }
 
 addToCartButton.addEventListener("click", addToCart);
 
+displayCart();
+
+
+function updateSeatAvailability() {
+    document.querySelectorAll(".seat").forEach(seatElement => {
+        const seatId = seatElement.dataset.seatId;
+
+        const isInCart = cart.some(item => item.id === seatId);
+
+        const isUnavailable = seatElement.classList.contains("unavailable");
+
+        if (isInCart) {
+            seatElement.classList.add("in-cart");
+        } else {
+            seatElement.classList.remove("in-cart");
+        }
+
+        // Keep originally unavailable seats disabled
+        seatElement.disabled = isInCart || isUnavailable;
+    });
+}
+
+
+updateSeatAvailability();
