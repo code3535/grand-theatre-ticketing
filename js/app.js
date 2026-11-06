@@ -133,3 +133,47 @@ document.getElementById("pan-right").addEventListener("click", () => {
     panX += 30;
     updateZoom();
 });
+
+
+venueMap.addEventListener("wheel", (event) => {
+    event.preventDefault();
+
+    if (event.deltaY < 0 && zoomLevel < 1.5) {
+        zoomLevel += 0.1;
+    } else if (event.deltaY > 0 && zoomLevel > 0.6) {
+        zoomLevel -= 0.1;
+    }
+
+    updateZoom();
+}, { passive: false });
+
+
+let isDragging = false;
+let startX = 0;
+let startY = 0;
+
+venueMap.addEventListener("mousedown", (event) => {
+
+    if (event.target.classList.contains("seat")) {
+        return;
+    }
+
+    isDragging = true;
+
+    startX = event.clientX - panX;
+    startY = event.clientY - panY;
+});
+
+document.addEventListener("mousemove", (event) => {
+
+    if (isDragging) {
+        panX = event.clientX - startX;
+        panY = event.clientY - startY;
+
+        updateZoom();
+    }
+});
+
+document.addEventListener("mouseup", () => {
+    isDragging = false;
+});

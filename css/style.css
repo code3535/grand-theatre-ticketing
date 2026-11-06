@@ -257,3 +257,12 @@ button:disabled {
     background: #555;
     opacity: 0.4;
 }
+
+#venue-map {
+    cursor: grab;
+    user-select: none;
+}
+
+#venue-map:active {
+    cursor: grabbing;
+}
