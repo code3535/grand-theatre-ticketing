@@ -41,6 +41,10 @@ function displayCart() {
 
     cartItems.innerHTML = "";
 
+    if (cart.length === 0) {
+    cartItems.innerHTML = "<p>Your cart is empty.</p>";
+    }
+
     let total = 0;
 
     cart.forEach(item => {
