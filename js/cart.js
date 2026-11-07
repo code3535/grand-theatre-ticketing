@@ -24,6 +24,7 @@ function addToCart() {
 
     saveCart();
     displayCart();
+    updateAvailableCount();
 
     selectedSeat = null;
 
@@ -80,6 +81,7 @@ function removeFromCart(seatId) {
 
     saveCart();
     displayCart();
+    updateAvailableCount();
 }
 
 addToCartButton.addEventListener("click", addToCart);
@@ -101,10 +103,21 @@ function updateSeatAvailability() {
             seatElement.classList.remove("in-cart");
         }
 
-        // Keep originally unavailable seats disabled
         seatElement.disabled = isInCart || isUnavailable;
     });
 }
 
 
 updateSeatAvailability();
+
+function updateAvailableCount() {
+    const availableCount = seats.filter(seat => {
+        return seat.status !== "unavailable" &&
+            !cart.some(item => item.id === seat.id);
+    }).length;
+
+    document.getElementById("available-count").textContent =
+        `Available seats: ${availableCount}`;
+}
+
+updateAvailableCount();
