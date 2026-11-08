@@ -272,3 +272,16 @@ button:disabled {
     font-weight: bold;
     margin-bottom: 20px;
 }
+
+#clear-cart {
+    background: #b83d3d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+#clear-cart:hover {
+    background: #d94c4c;
+}

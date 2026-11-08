@@ -121,3 +121,24 @@ function updateAvailableCount() {
 }
 
 updateAvailableCount();
+
+function clearCart() {
+    if (cart.length === 0) {
+        return;
+    }
+
+    const confirmation = confirm("Are you sure you want to clear your cart?");
+
+    if (!confirmation) {
+        return;
+    }
+
+    cart.length = 0;
+
+    updateSeatAvailability();
+    saveCart();
+    displayCart();
+    updateAvailableCount();
+}
+
+document.getElementById("clear-cart").addEventListener("click", clearCart);
