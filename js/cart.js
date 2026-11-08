@@ -26,6 +26,9 @@ function addToCart() {
     displayCart();
     updateAvailableCount();
 
+    document.getElementById("booking-message").textContent =
+    `${selectedSeat.id} has been successfully added to your cart! Price: ${selectedSeat.price} AZN.`;
+    
     selectedSeat = null;
 
     document.querySelectorAll(".seat.selected").forEach(element => {
@@ -134,6 +137,7 @@ function clearCart() {
     }
 
     cart.length = 0;
+    document.getElementById("booking-message").textContent = "";
 
     updateSeatAvailability();
     saveCart();
