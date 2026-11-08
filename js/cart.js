@@ -80,6 +80,9 @@ function removeFromCart(seatId) {
     if (index !== -1) {
         cart.splice(index, 1);
         updateSeatAvailability();
+
+         document.getElementById("booking-message").textContent =
+            `${seatId} has been removed from your cart.`;
     }
 
     saveCart();
