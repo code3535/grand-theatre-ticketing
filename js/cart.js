@@ -72,6 +72,8 @@ function displayCart() {
     });
 
     totalPrice.textContent = `${total} AZN`;
+    document.getElementById("cart-count").textContent =
+    `Tickets in cart: ${cart.length}`;
 }
 
 function removeFromCart(seatId) {
